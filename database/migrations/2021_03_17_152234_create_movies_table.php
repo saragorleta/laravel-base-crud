@@ -15,6 +15,8 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
+            // questi 'name', 'cast', 'genre' etc possono essere anche in italiano
+            // (ovviamnete anche nel db devono esserlo, perchè devono corrispondere)
             $table->string('name');
             $table->string('cast');
             $table->string('genre');

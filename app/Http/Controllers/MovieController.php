@@ -41,12 +41,20 @@ class MovieController extends Controller
     {
         $data = $request -> all();
 
+        // inseriamo il validate
+        $request ->validate([
+            name=> 'required|unique:movies|max:255',
+            cast=> 'required|unique:movies|max:255',
+            genre=> 'required|unique:movies|max:255',
+            preview=> 'required|unique:movies|text',
+
+        ]);
         $movieNew = new Movie();
 
         $movieNew ->fill($data);
 
         $movieNew-> save();
-
+//con save mi crea la riga con l'id
         return redirect()->route('movies.show', $movieNew);
 
 
@@ -59,7 +67,21 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)   
+    public function show(Movie $film_dettagli)   
+      {
+        /**$film_dettagli = Movie::find($id);*/
+
+        if ($film_dettagli){
+        $data = [
+            'film_dett' => $film_dettagli
+        ];
+        return view('movies.show', $data);
+        }
+
+        abort ('404');
+      }
+
+      /**public function show($id)   
       {
         $film_dettagli = Movie::find($id);
 
@@ -73,15 +95,27 @@ class MovieController extends Controller
         abort ('404');
       }
 
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movie $film_dettagli)
     {
-        //
+        // la parte di edit è uguale alla show
+        //cambia solo la rotta = 'movies.edit'
+        if ($film_dettagli){
+            $data = [
+                'film_dett' => $film_dettagli
+            ];
+            return view('movies.edit', $data);
+            }
+    
+            abort ('404');
     }
 
     /**

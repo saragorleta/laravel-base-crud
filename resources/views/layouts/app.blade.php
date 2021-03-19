@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- serve per tradurre in italiano;questa stringa l'abbiamo 
+presa dal file welcome.blade.php-->
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- serve per tradurre in italiano -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

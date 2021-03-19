@@ -23,7 +23,10 @@
       <td>{{$film->cast}}</td>
       <td>{{$film->genre}}</td>
       <td>
-        <a href="{{ route('movies.show', ['movie'=> $film->id])}}">Dettagli</a>
+        <a href="{{ route('movies.show', ['movie'=> $film->id])}}"
+        class="btn btn-info">Dettagli</a>
+        <a href="{{ route('movies.edit', ['movie'=> $film->id])}}"
+        class="btn btn-warning">Modifica</a>
       </td>
     </tr>
 

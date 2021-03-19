@@ -4,20 +4,9 @@
 
 @section ('content')
 <h1>Carica il tuo film</h1>
-<!-- preso da laravel-validator e va a segnalare 
-l'errore sull'inserimentodi qualche campo -->
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
 <div class= "container">
-<form method="post" action ="{{ route ('movies.store')}}">
+<form method="post" action ="">
 @method ('POST')
 @csrf
 
